@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¹´ 
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -29,12 +28,12 @@ int main() {
   cin >> command ;  // get a command
   cout << endl;
   while ( command != 0 ) {
-  	val = 0; // Âk¹s 
-    for ( int i = 0 ; i < 1001 ; i++ ) { // ªì©l¤Æ 
+  	val = 0; // æ­¸é›¶ 
+    for ( int i = 0 ; i < 1001 ; i++ ) { // åˆå§‹åŒ– 
       infix[i] = '\0' ;
       postfix[i] = '\0' ;
     } // for
-  	error = false ; // ªì©l¤Æ 
+  	error = false ; // åˆå§‹åŒ– 
     if ( command == 1 ) { // mission
       cout << endl << "Input an infix expression:" ;
       cin.getline( infix, sizeof(infix), '\n' ) ;
@@ -196,7 +195,7 @@ int PostToInt(char* Postfix) {
     return stack[top];
 } // PostToInt()
 
-int Cal(char op, int N1, int N2) { //­pºâ²Å¸¹ 
+int Cal(char op, int N1, int N2) { //è¨ˆç®—ç¬¦è™Ÿ 
     switch(op)
 	{
         case '+':
