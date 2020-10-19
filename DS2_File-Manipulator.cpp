@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¾ô 
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -71,7 +70,7 @@ class Info{
       	gnum++;
 	  	string temp;
 	  	for ( int i = 0; tabcount < 10 ; i++ ) {
-	  	  if ( data[i] == '\t' ) { // ±qrawRÅª¨ú¸ê°T(sNO.gNO.cname.gname) 
+	  	  if ( data[i] == '\t' ) { // å¾rawRè®€å–è³‡è¨Š(sNO.gNO.cname.gname) 
             tabcount++;
 			tabend = i;
 			if ( tabcount == 1 ) {
@@ -126,9 +125,9 @@ class Info{
 
 
 void saveFile( string &name ); // save all records into a file
-void DealN( string &name ); // ³B²zÀÉ¦W
+void DealN( string &name ); // è™•ç†æª”å
 void DealN2( string &name );
-void Judgedat(int lows, int lowg, int lowt, string &tempdat);//²Ä¤GÃD§PÂ_¾Ç¥Í¼Æ©M²¦·~¼Æ 
+void Judgedat(int lows, int lowg, int lowt, string &tempdat);//ç¬¬äºŒé¡Œåˆ¤æ–·å­¸ç”Ÿæ•¸å’Œç•¢æ¥­æ•¸ 
 void mission1( int &stop );
 void mission2( int &stop );
 void mission3( int &stop );
@@ -176,7 +175,7 @@ void mission1( int &stop ) {
 	  stop = 0;
 	  return;
     }
-    DealN( name );// ³B²zINPUT
+    DealN( name );// è™•ç†INPUT
 	fin.open( name.c_str() );
     while ( !fin ) {
     	cout << "### " << name << " does not exist! ###" << endl;
@@ -186,15 +185,15 @@ void mission1( int &stop ) {
 	      stop = 0;
 	      return;
         }
-		DealN( name );// ³B²zINPUT
+		DealN( name );// è™•ç†INPUT
 		fin.open( name.c_str() );
 	}
 	string tempdat;
-	for ( int n = 0; n < 3 ; n++ ) {// ¥h±¼¼ĞÃD
+	for ( int n = 0; n < 3 ; n++ ) {// å»æ‰æ¨™é¡Œ
 		getline(fin,tempdat);
 	}
 	int i = 0;
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
@@ -207,14 +206,14 @@ void mission1( int &stop ) {
 void mission2( int &stop ) {
 	string name;
 	ifstream fin;
-	int lows = 0, lowg = 0, lowt;// ³Ì§C¾Ç¥Í¼Æ©M³Ì§C²¦·~¥Í¼Æ 
+	int lows = 0, lowg = 0, lowt;// æœ€ä½å­¸ç”Ÿæ•¸å’Œæœ€ä½ç•¢æ¥­ç”Ÿæ•¸ 
 	cout << "input 201,202.....[0] quit: " << endl;
 	cin >> name;
 	if (name == "0" ) {
 	  stop = 0;
 	  return;
     }
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
 	fin.open( name.c_str() );
     while ( !fin ) {
     	cout << "### " << name << " does not exist! ###" << endl;
@@ -224,7 +223,7 @@ void mission2( int &stop ) {
 	      stop = 0;
 	      return;
         }
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		fin.open( name.c_str() );
 	}
 	cout << "input a lower bound on the number of students :" ;
@@ -236,11 +235,11 @@ void mission2( int &stop ) {
 	string tempdat;
 	//cout << name << endl;
 	int i = 0;
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
-	Judgedat(lows, lowg, lowt, tempdat );//¤ÀªRÀÉ®×¤¤¾Ç¥Í¼Æ©M²¦·~¥Í¼Æ 
+	Judgedat(lows, lowg, lowt, tempdat );//åˆ†ææª”æ¡ˆä¸­å­¸ç”Ÿæ•¸å’Œç•¢æ¥­ç”Ÿæ•¸ 
     
 	saveFile( name ); // copy Data
 
@@ -259,7 +258,7 @@ void mission3( int &stop ) {
 	  stop = 0;
 	  return;
     }
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
     for (int i = 0; i < 3 ; i++ ) fileN = fileN + name[i + 4];
 	fin.open( name.c_str() );
     while ( !fin ) {
@@ -270,12 +269,12 @@ void mission3( int &stop ) {
 	      stop = 0;
 	      return;
         }
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		for (int i = 0; i < 3 ; i++ ) fileN = fileN + name[i + 4];
 		fin.open( name.c_str() );
 	}
 	string tempdat;
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
@@ -299,13 +298,13 @@ void mission3( int &stop ) {
 	      stop = 0;
 	      return;
         }
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		for (int i = 0; i < 3 ; i++ ) fileN = fileN + name[i + 4];
 		gin.open( name.c_str() );
 	}
 	//cout << name << endl;
 	
-	while ( getline(gin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(gin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list1.push_back(binary); // add data to last one;
 	}
@@ -353,7 +352,7 @@ void mission4( int &stop ){
 	  stop = 0;
 	  return;
     }
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
     for (int i = 0; i < 3 ; i++ ) fileN = fileN + name[i + 4];
 	fin.open( name.c_str() );
     while ( !fin ) {
@@ -364,12 +363,12 @@ void mission4( int &stop ){
 	      stop = 0;
 	      return;
         }
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		for (int i = 0; i < 3 ; i++ ) fileN = fileN + name[i + 4];
 		fin.open( name.c_str() );
 	}
 	string tempdat;
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
@@ -388,13 +387,13 @@ void mission4( int &stop ){
     	cout << "input 201,202.....to second file[0] quit: " << endl;
 		cin >> name;
 		if (name == "0" ) return ;
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		for (int i = 0; i < 3 ; i++ ) fileN2 = fileN2 + name[i + 4];
 		gin.open( name.c_str() );
 	}
 	//cout << name << endl;
 	
-	while ( getline(gin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(gin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list1.push_back(binary); // add data to last one;
 	}
@@ -432,11 +431,11 @@ void mission4( int &stop ){
     	cout << "### " << name << " does not exist! ###" << endl;
     	cout << "input 201,202.....[0] quit: " << endl;
 		cin >> name;
-		DealN2( name );// ³B²zINPUT
+		DealN2( name );// è™•ç†INPUT
 		for (int i = 0; i < 3 ; i++ ) fileN3 = fileN3 + name[i + 4];
 		hin.open( name.c_str() );
 	}
-	while ( getline(hin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(hin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list2.push_back(binary); // add data to last one;
 	}
