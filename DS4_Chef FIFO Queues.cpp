@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¹´ 
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -36,7 +35,7 @@ using namespace std;
      int Cid ;
      cT Current ;
      queue<cT> waittinglist ; 
-     bool standby = true ; // chef¬O§_¶¢¸m 
+     bool standby = true ; // chefæ˜¯å¦é–’ç½® 
      int currenttime;
    }; 
    	cT ordqueue ;
@@ -86,9 +85,9 @@ void sort(int);
 void saveFile( string &name ); // save all records into a file
 void saveFile2( string &name ); // save all records into a file
 void saveFile3( string &name ); // save all records into a file
-void DealN( string &name ); // ³B²zÀÉ¦W
+void DealN( string &name ); // è™•ç†æª”å
 void DealN2( string &name );
-void Judgedat(int lows, int lowg, int lowt, string &tempdat);//²Ä¤GÃD§PÂ_¾Ç¥Í¼Æ©M²¦·~¼Æ 
+void Judgedat(int lows, int lowg, int lowt, string &tempdat);//ç¬¬äºŒé¡Œåˆ¤æ–·å­¸ç”Ÿæ•¸å’Œç•¢æ¥­æ•¸ 
 void mission1( int &stop );
 void mission2( int & index );
 void mission3( int & index );
@@ -155,20 +154,20 @@ void mission1( int &stop ) {
 	int index = 0;
 	cout << "Input a file number (e.g., 401, 402, 403, ...):" ;
 	cin >> name;
-    DealN( name );// ³B²zINPUT
+    DealN( name );// è™•ç†INPUT
 	fin.open( name.c_str() );
     if ( !fin ) {
       return ;
 	}
 	start1 = clock();
 	string tempdat;
-    getline(fin,tempdat); // ¥h±¼¼ĞÃD
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+    getline(fin,tempdat); // å»æ‰æ¨™é¡Œ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	  DealDat( tempdat ) ;// input data to class
       list.push_back(lib); // add data to last one;
 	}
     cout << "  	 OID	Arrival	Duration	TimeOut" << endl ;
-	while ( i < list.size() + 1 ) { // ¦L¥X¥¼±Æ§Ç«eªºinput.txt 
+	while ( i < list.size() + 1 ) { // å°å‡ºæœªæ’åºå‰çš„input.txt 
 		cout << "(" << i << ")" << "	" << list[i-1].Oid << "	" << list[i-1].Arr << "	" << list[i-1].Dur << "	" << list[i-1].Time << endl ;
 	    i++ ;
 	}
@@ -187,7 +186,7 @@ void mission1( int &stop ) {
     
 
     cout << "  	 OID	Arrival	Duration	TimeOut" << endl ;
-    while ( j < list.size() + 1 ) { // ¦L¥X±Æ§Ç«áªºinput.txt 
+    while ( j < list.size() + 1 ) { // å°å‡ºæ’åºå¾Œçš„input.txt 
 	  cout << "(" << j << ")" << "	" << list[j-1].Oid << "	" << list[j-1].Arr << "	" << list[j-1].Dur << "	" << list[j-1].Time << endl ;
       j++ ;
     }	 
@@ -209,55 +208,55 @@ void mission2( int &index ) {
 	int i = 1;
 	cout << "Input a file number (e.g., 401, 402, 403, ...):" ;
 	cin >> name;
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
 	fin.open( name.c_str() );    
     if ( !fin ) {
       return ;
 	}    
 	string tempdat;
-    getline(fin,tempdat); // ¥h±¼¼ĞÃD
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+    getline(fin,tempdat); // å»æ‰æ¨™é¡Œ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	  DealDat( tempdat ) ;// input data to class
       list1.push_back(lib); // add data to last one;
 	}    
 //---------------------------------------------------------------------------------------------------
-    int currenttime = 0 ;  // §ó·s·í¤U®É¨è 
-      // ¤@­Óchefªº±¡ªp 
-      while ( a < list1.size() ) { //  ³B²z¤@µ§¤@µ§­q³æ 
-          if ( cheforder[index].standby ) { // ¼p®v­Y¶¢¸m ±N­q³æ¸ê®Æ¶Ç¹L¥h
+    int currenttime = 0 ;  // æ›´æ–°ç•¶ä¸‹æ™‚åˆ» 
+      // ä¸€å€‹chefçš„æƒ…æ³ 
+      while ( a < list1.size() ) { //  è™•ç†ä¸€ç­†ä¸€ç­†è¨‚å–® 
+          if ( cheforder[index].standby ) { // å»šå¸«è‹¥é–’ç½® å°‡è¨‚å–®è³‡æ–™å‚³éå»
           	cheforder[index].Current = list1[a] ; 
             currenttime = cheforder[index].Current.Arr ;
             for ( a = 1 ; a < 4 ; a++ )
-		      cheforder[index].waittinglist.push(list1[a]) ; //Àx¦s¦î¦C 
+		      cheforder[index].waittinglist.push(list1[a]) ; //å„²å­˜ä½‡åˆ— 
           	cheforder[index].standby = false ;
           	a--;
 		  }
-		  else {     //¼p®v«D¶¢¸mª¬ºA   
-			    if ( list1[a].Arr < currenttime && !first) { // ·sªº­q³æ©è¹F­Y¼p®v©|¥¼§¹¦¨·í«e­q³æ
-			      abortlist.push_back(temp) ;     //ª½±µ¨ú®ø­q³æ ©ñ¤Jvector¦s¨ú¨ú®øªº­q³æ¸ê°T
+		  else {     //å»šå¸«éé–’ç½®ç‹€æ…‹   
+			    if ( list1[a].Arr < currenttime && !first) { // æ–°çš„è¨‚å–®æŠµé”è‹¥å»šå¸«å°šæœªå®Œæˆç•¶å‰è¨‚å–®
+			      abortlist.push_back(temp) ;     //ç›´æ¥å–æ¶ˆè¨‚å–® æ”¾å…¥vectorå­˜å–å–æ¶ˆçš„è¨‚å–®è³‡è¨Š
 			      abortlist[m].Oid = list1[a].Oid ;
 			      abortlist[m].Delay = 0 ;
 			      abortlist[m].Abort = list1[a].Arr ; 
 			      m++;
 			    }
-		  	    else {   // ·sªº­q³æ©è¹F¼p®v¤w§¹¦¨·í«e­q³æ
+		  	    else {   // æ–°çš„è¨‚å–®æŠµé”å»šå¸«å·²å®Œæˆç•¶å‰è¨‚å–®
 		  	      if ( currenttime >= cheforder[index].Current.Time ) {
-			        abortlist.push_back(temp) ;     //ª½±µ¨ú®ø­q³æ ©ñ¤Jvector¦s¨ú¨ú®øªº­q³æ¸ê°T
+			        abortlist.push_back(temp) ;     //ç›´æ¥å–æ¶ˆè¨‚å–® æ”¾å…¥vectorå­˜å–å–æ¶ˆçš„è¨‚å–®è³‡è¨Š
 			        abortlist[m].Oid = cheforder[index].Current.Oid ;
 			        abortlist[m].Delay = currenttime - cheforder[index].Current.Arr ;
 			        abortlist[m].Abort = currenttime ; 
 			        m++;		  	      	
 				  }
-		  	      else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { //§¹¦¨·í«e­q³æ«áµo²{¶W¹L®É¶¡¤F  ¦s¤J¶W®Évector 
+		  	      else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { //å®Œæˆç•¶å‰è¨‚å–®å¾Œç™¼ç¾è¶…éæ™‚é–“äº†  å­˜å…¥è¶…æ™‚vector 
 			        currenttime = currenttime + cheforder[index].Current.Dur ;
 		  	        timeoutlist.push_back(temp) ;
 		  	        timeoutlist[n].Oid =  cheforder[index].Current.Oid ;
 			        timeoutlist[n].Delay = currenttime - cheforder[index].Current.Arr - cheforder[index].Current.Dur ;
 			        timeoutlist[n].Abort = currenttime; 
-				 	first = false ;              // §¹¦¨®É¨è 
+				 	first = false ;              // å®Œæˆæ™‚åˆ» 
                     n++;
 			      }
-			      else {   // ·Ç®É§¹¦¨­q³æ ¦s¤J§¹¦¨vector 
+			      else {   // æº–æ™‚å®Œæˆè¨‚å–® å­˜å…¥å®Œæˆvector 
                     currenttime = currenttime + cheforder[index].Current.Dur ;
 			    	complete.push_back(temp) ;
 			    	complete[b].Oid = cheforder[index].Current.Oid ;
@@ -266,18 +265,18 @@ void mission2( int &index ) {
 			    	first = false ;
 			    	b++ ;
 			       }
-			        cheforder[index].Current = cheforder[index].waittinglist.front(); // ±N¦î¦C²Ä¤@µ§­q³æÅÜ¦¨¼p®v·í«eªº¤u§@	  
-			        cheforder[index].waittinglist.pop();	// ²¾°£¦î¦C²Ä¤@µ§­q³æ 
+			        cheforder[index].Current = cheforder[index].waittinglist.front(); // å°‡ä½‡åˆ—ç¬¬ä¸€ç­†è¨‚å–®è®Šæˆå»šå¸«ç•¶å‰çš„å·¥ä½œ	  
+			        cheforder[index].waittinglist.pop();	// ç§»é™¤ä½‡åˆ—ç¬¬ä¸€ç­†è¨‚å–® 
 			        while ( cheforder[index].waittinglist.size() < 3 && a < list1.size() ) {
 			          inwhile = true;
 			          if ( currenttime > list1[a].Arr ) {
-					    abortlist.push_back(temp) ;     //ª½±µ¨ú®ø­q³æ ©ñ¤Jvector¦s¨ú¨ú®øªº­q³æ¸ê°T
+					    abortlist.push_back(temp) ;     //ç›´æ¥å–æ¶ˆè¨‚å–® æ”¾å…¥vectorå­˜å–å–æ¶ˆçš„è¨‚å–®è³‡è¨Š
 			            abortlist[m].Oid = list1[a].Oid ;
 			            abortlist[m].Delay = 0 ;
 			            abortlist[m].Abort = list1[a].Arr ; 
 			            m++;
 				      }
-					  else  cheforder[index].waittinglist.push(list1[a]) ; //Àx¦s¦î¦C 
+					  else  cheforder[index].waittinglist.push(list1[a]) ; //å„²å­˜ä½‡åˆ— 
 					  a++;
 				    } // while 
 				    if ( inwhile ) {
@@ -289,23 +288,23 @@ void mission2( int &index ) {
 		  }   
 		  a++; 
        } // while  
-        // ³B²z§¹©Ò¦³­q³æ ³B²z³Ñ¾l¯d¦b¦î¦C¤ºªº 
+        // è™•ç†å®Œæ‰€æœ‰è¨‚å–® è™•ç†å‰©é¤˜ç•™åœ¨ä½‡åˆ—å…§çš„ 
 	   if ( currenttime >= cheforder[index].Current.Time ) {
-	      abortlist.push_back(temp) ;     //ª½±µ¨ú®ø­q³æ ©ñ¤Jvector¦s¨ú¨ú®øªº­q³æ¸ê°T
+	      abortlist.push_back(temp) ;     //ç›´æ¥å–æ¶ˆè¨‚å–® æ”¾å…¥vectorå­˜å–å–æ¶ˆçš„è¨‚å–®è³‡è¨Š
 	      abortlist[m].Oid = cheforder[index].Current.Oid ;
 	      abortlist[m].Delay = currenttime - cheforder[index].Current.Arr ;
 	      abortlist[m].Abort = currenttime ; 
 	      m++;		  	      	
 	    }
-        else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { // ¼p®v³B²z§¹·í«e­q³æ µo²{¶W®É 
+        else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { // å»šå¸«è™•ç†å®Œç•¶å‰è¨‚å–® ç™¼ç¾è¶…æ™‚ 
            currenttime = currenttime + cheforder[index].Current.Dur ;
 	 	   timeoutlist.push_back(temp) ;
        	   timeoutlist[n].Oid =  cheforder[index].Current.Oid ;
 	  	   timeoutlist[n].Delay = currenttime - cheforder[index].Current.Arr - cheforder[index].Current.Dur ;
-		   timeoutlist[n].Abort = currenttime;               // §¹¦¨®É¨è 
+		   timeoutlist[n].Abort = currenttime;               // å®Œæˆæ™‚åˆ» 
            n++;
 	     }
-	     else {   // ·Ç®É§¹¦¨­q³æ ¦s¤J§¹¦¨vector 
+	     else {   // æº–æ™‚å®Œæˆè¨‚å–® å­˜å…¥å®Œæˆvector 
 		   complete.push_back(temp) ;
 		   currenttime = currenttime + cheforder[index].Current.Dur ;
 	 	   complete[b].Oid = cheforder[index].Current.Oid ;
@@ -314,24 +313,24 @@ void mission2( int &index ) {
 		   b++ ;
 	     }
         while ( cheforder[index].waittinglist.size() > 0  ) {  
-           cheforder[index].Current = cheforder[index].waittinglist.front(); // ±N¦î¦C²Ä¤@µ§­q³æÅÜ¦¨¼p®v·í«eªº¤u§@	  
-	       cheforder[index].waittinglist.pop();	// ²¾°£¦î¦C²Ä¤@µ§­q³æ    
+           cheforder[index].Current = cheforder[index].waittinglist.front(); // å°‡ä½‡åˆ—ç¬¬ä¸€ç­†è¨‚å–®è®Šæˆå»šå¸«ç•¶å‰çš„å·¥ä½œ	  
+	       cheforder[index].waittinglist.pop();	// ç§»é™¤ä½‡åˆ—ç¬¬ä¸€ç­†è¨‚å–®    
           if ( currenttime >= cheforder[index].Current.Time ) {
-	        abortlist.push_back(temp) ;     //ª½±µ¨ú®ø­q³æ ©ñ¤Jvector¦s¨ú¨ú®øªº­q³æ¸ê°T
+	        abortlist.push_back(temp) ;     //ç›´æ¥å–æ¶ˆè¨‚å–® æ”¾å…¥vectorå­˜å–å–æ¶ˆçš„è¨‚å–®è³‡è¨Š
 	        abortlist[m].Oid = cheforder[index].Current.Oid ;
 	        abortlist[m].Delay = currenttime - cheforder[index].Current.Arr ;
 	        abortlist[m].Abort = currenttime ; 
 	        m++;		  	      	
 	      }
-	      else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { // ¼p®v³B²z§¹·í«e­q³æ µo²{¶W®É 
+	      else if ( currenttime + cheforder[index].Current.Dur > cheforder[index].Current.Time ) { // å»šå¸«è™•ç†å®Œç•¶å‰è¨‚å–® ç™¼ç¾è¶…æ™‚ 
 	        currenttime = currenttime + cheforder[index].Current.Dur ;
 	 	    timeoutlist.push_back(temp) ;
        	    timeoutlist[n].Oid =  cheforder[index].Current.Oid ;
 	  	    timeoutlist[n].Delay = currenttime - cheforder[index].Current.Arr - cheforder[index].Current.Dur ;
-		    timeoutlist[n].Abort = currenttime;               // §¹¦¨®É¨è 
+		    timeoutlist[n].Abort = currenttime;               // å®Œæˆæ™‚åˆ» 
             n++;
 	      }
-	      else {   // ·Ç®É§¹¦¨­q³æ ¦s¤J§¹¦¨vector 
+	      else {   // æº–æ™‚å®Œæˆè¨‚å–® å­˜å…¥å®Œæˆvector 
 		    complete.push_back(temp) ;
 	   	    currenttime = currenttime + cheforder[index].Current.Dur ;
 	 	    complete[b].Oid = cheforder[index].Current.Oid ;
@@ -345,7 +344,7 @@ void mission2( int &index ) {
 
   saveFile2( name ) ;
 } // mission2()
-//---------------------------------------------2­Ó¼p®v----------------------------------------------------------------------------                 
+//---------------------------------------------2å€‹å»šå¸«----------------------------------------------------------------------------                 
 
 void mission3( int &index ) {
 	int m = 0;
@@ -361,39 +360,39 @@ void mission3( int &index ) {
   	bool have = false ;
 	cout << "Input a file number (e.g., 401, 402, 403, ...):" ;
 	cin >> name;
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
 	fin.open( name.c_str() );    
     if ( !fin ) {
       return ;
 	}    
 	string tempdat;
-    getline(fin,tempdat); // ¥h±¼¼ĞÃD
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+    getline(fin,tempdat); // å»æ‰æ¨™é¡Œ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	  DealDat( tempdat ) ;// input data to class
       list1.push_back(lib); // add data to last one;
 	}    
 	int currenttime = 0 ;
-	//----------------------------------------¶}©l³B²z­q³æ ------------------------------------------------------- 
+	//----------------------------------------é–‹å§‹è™•ç†è¨‚å–® ------------------------------------------------------- 
 	for ( int i = 0 ; i < list1.size() ; i ++ ) {
 		placed = false ;
-		if ( currenttime == 0 ) { //³]©wªì©l­È 0 
+		if ( currenttime == 0 ) { //è¨­å®šåˆå§‹å€¼ 0 
 			for ( int r = 0 ; r < index ; r ++ ) {
 				cheforder[r].currenttime = 0 ;
 			}
 		}
-		for ( int a = 0 ; a < index ; a ++ ) {  //§ó·s·í«e®É¨è 
+		for ( int a = 0 ; a < index ; a ++ ) {  //æ›´æ–°ç•¶å‰æ™‚åˆ» 
 			if ( cheforder[a].currenttime < list1[i].Arr && cheforder[a].Current.Oid == 0 ) {
 				cheforder[a].currenttime = list1[i].Arr ;
 			}
 		}
-		currenttime = list1[i].Arr ; //³]©w·í«e®É¨è 
+		currenttime = list1[i].Arr ; //è¨­å®šç•¶å‰æ™‚åˆ» 
 		
 		for ( int n = 0 ; n < index ; n++ ){
 			if( cheforder[n].Current.Oid != 0 ) {
 				have = true ;	
 				if ( ((currenttime >= cheforder[n].Current.Time) || ( currenttime >= cheforder[n].Current.Dur + cheforder[n].currenttime )) ) {				
 					while(((currenttime >= cheforder[n].Current.Time) || ( currenttime >= cheforder[n].Current.Dur + cheforder[n].currenttime )) && have ) {
-						if ( cheforder[n].currenttime >= cheforder[n].Current.Time ) {  //·í«e­q³æ¶W¹L®É¶¡  ¨ú®ø 
+						if ( cheforder[n].currenttime >= cheforder[n].Current.Time ) {  //ç•¶å‰è¨‚å–®è¶…éæ™‚é–“  å–æ¶ˆ 
 							abortlist2.push_back(temp2) ;
 							abortlist2[m].Oid = cheforder[n].Current.Oid ;
 							abortlist2[m].Cid = n + 1 ;
@@ -401,18 +400,18 @@ void mission3( int &index ) {
 							abortlist2[m].Abort = cheforder[n].currenttime ;
 							m++;
 						}						
-						// ·í«e­q³æ©|¥¼¶W¹L®É¶¡ 
-						else if ( cheforder[n].currenttime + cheforder[n].Current.Dur > cheforder[n].Current.Time ) {  // ³B²z§¹«áµo²{¶W®É 
+						// ç•¶å‰è¨‚å–®å°šæœªè¶…éæ™‚é–“ 
+						else if ( cheforder[n].currenttime + cheforder[n].Current.Dur > cheforder[n].Current.Time ) {  // è™•ç†å®Œå¾Œç™¼ç¾è¶…æ™‚ 
 							timeoutlist2.push_back(temp2) ;
 							timeoutlist2[o].Oid = cheforder[n].Current.Oid ;
 							timeoutlist2[o].Cid = n + 1 ;
 							timeoutlist2[o].Delay = cheforder[n].currenttime - cheforder[n].Current.Arr ;
 							timeoutlist2[o].Abort = cheforder[n].currenttime + cheforder[n].Current.Dur ;
 							o++;							
-							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è 
+							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ» 
 						}
-						else {    // ·Ç®É§¹¦¨­q³æ 
-							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è 
+						else {    // æº–æ™‚å®Œæˆè¨‚å–® 
+							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ» 
 		                    complete2.push_back(temp2) ;
 	 	     				complete2[l].Oid = cheforder[n].Current.Oid ;
 	 	     				complete2[l].Cid = n + 1 ;
@@ -424,10 +423,10 @@ void mission3( int &index ) {
 						
 						cheforder[n].Current.Oid = 0 ;
 						
-						if ( ! cheforder[n].waittinglist.empty() ) { //­Y¦î¦CÁÙ¦³­q³æ ±N¦î¦C³Ì¤W­±©ñ¤J·í«e­q³æ 
+						if ( ! cheforder[n].waittinglist.empty() ) { //è‹¥ä½‡åˆ—é‚„æœ‰è¨‚å–® å°‡ä½‡åˆ—æœ€ä¸Šé¢æ”¾å…¥ç•¶å‰è¨‚å–® 
 							
 							cheforder[n].Current = cheforder[n].waittinglist.front() ;
-							cheforder[n].waittinglist.pop() ; //§R°£¦î¦C²Ä¤@µ§ 
+							cheforder[n].waittinglist.pop() ; //åˆªé™¤ä½‡åˆ—ç¬¬ä¸€ç­† 
 							have = true ;
 							
 						}
@@ -439,7 +438,7 @@ void mission3( int &index ) {
 
 
 		// search for free chef
-		for ( int j = 0 ; j < index && ! placed ; j ++ ) { // §äªÅ¶¢ªº¼p®v µ¹¤©·s­q³æ 
+		for ( int j = 0 ; j < index && ! placed ; j ++ ) { // æ‰¾ç©ºé–’çš„å»šå¸« çµ¦äºˆæ–°è¨‚å–® 
 			if( cheforder[j].Current.Oid == 0 ) {
 				cheforder[j].Current = list1[i] ;
 				cheforder[j].currenttime = list1[i].Arr ;
@@ -448,7 +447,7 @@ void mission3( int &index ) {
 		}
 
 		// search for the smallest queue
-		for ( int k = 0 ; k < index && ! placed ; k ++ ) { // §ä¦î¦C³Ì¤pªº¼p®v 
+		for ( int k = 0 ; k < index && ! placed ; k ++ ) { // æ‰¾ä½‡åˆ—æœ€å°çš„å»šå¸« 
 			if(cheforder[k].waittinglist.size() < smallest) {
 				indexOfChef = k ;
 				smallest = cheforder[k].waittinglist.size() ;
@@ -458,7 +457,7 @@ void mission3( int &index ) {
 
 		if(!placed ) {
 			
-			if ( smallest == 3 ) {  //¦î¦C¬Òº¡   ¨ú®ø­q³æ 
+			if ( smallest == 3 ) {  //ä½‡åˆ—çš†æ»¿   å–æ¶ˆè¨‚å–® 
 				abortlist2.push_back(temp2) ;
 				abortlist2[m].Oid = list1[i].Oid ;
 				abortlist2[m].Cid = 0 ;
@@ -467,7 +466,7 @@ void mission3( int &index ) {
 				m++;
 				
 			}
-			else { //¦î¦C¨Sº¡  ±N·sªº¤@µ§­q³æ©ñ¤J¦î¦C 
+			else { //ä½‡åˆ—æ²’æ»¿  å°‡æ–°çš„ä¸€ç­†è¨‚å–®æ”¾å…¥ä½‡åˆ— 
 				cheforder[indexOfChef].waittinglist.push(list1[i]) ;
 			}			
 			
@@ -478,7 +477,7 @@ void mission3( int &index ) {
 		smallest = 3 ;
 		
 	}
-	//­q³æµ²§ô ³B²z·í«e©M¦î¦C¤ºªº­q³æ 
+	//è¨‚å–®çµæŸ è™•ç†ç•¶å‰å’Œä½‡åˆ—å…§çš„è¨‚å–® 
 	
 	for (int n = 0 ; n < index ; n++) {
 		
@@ -508,10 +507,10 @@ void mission3( int &index ) {
 				timeoutlist2[o].Delay = cheforder[n].currenttime - cheforder[n].Current.Arr ;
 				timeoutlist2[o].Abort = cheforder[n].currenttime + cheforder[n].Current.Dur ;
 				o++;				
-				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è		
+				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ»		
 			}
 			else {
-				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è
+				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ»
 		        complete2.push_back(temp2) ;
 	 	     	complete2[l].Oid = cheforder[n].Current.Oid ;
 	 	     	complete2[l].Cid = n + 1 ;
@@ -551,39 +550,39 @@ void mission4( int &index ) {
 	cout << "Input the number of queues: " ;
     cin >> index;
     Chef cheforder[index];
-    DealN2( name );// ³B²zINPUT
+    DealN2( name );// è™•ç†INPUT
 	fin.open( name.c_str() );    
     if ( !fin ) {
       return ;
 	}    
 	string tempdat;
-    getline(fin,tempdat); // ¥h±¼¼ĞÃD
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+    getline(fin,tempdat); // å»æ‰æ¨™é¡Œ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	  DealDat( tempdat ) ;// input data to class
       list1.push_back(lib); // add data to last one;
 	}    
 	int currenttime = 0 ;
-	//----------------------------------------¶}©l³B²z­q³æ ------------------------------------------------------- 
+	//----------------------------------------é–‹å§‹è™•ç†è¨‚å–® ------------------------------------------------------- 
 	for ( int i = 0 ; i < list1.size() ; i ++ ) {
 		placed = false ;
-		if ( currenttime == 0 ) { //³]©wªì©l­È 0 
+		if ( currenttime == 0 ) { //è¨­å®šåˆå§‹å€¼ 0 
 			for ( int r = 0 ; r < index ; r ++ ) {
 				cheforder[r].currenttime = 0 ;
 			}
 		}
-		for ( int a = 0 ; a < index ; a ++ ) {  //§ó·s·í«e®É¨è 
+		for ( int a = 0 ; a < index ; a ++ ) {  //æ›´æ–°ç•¶å‰æ™‚åˆ» 
 			if ( cheforder[a].currenttime < list1[i].Arr && cheforder[a].Current.Oid == 0 ) {
 				cheforder[a].currenttime = list1[i].Arr ;
 			}
 		}
-		currenttime = list1[i].Arr ; //³]©w·í«e®É¨è 
+		currenttime = list1[i].Arr ; //è¨­å®šç•¶å‰æ™‚åˆ» 
 		
 		for ( int n = 0 ; n < index ; n++ ){
 			if( cheforder[n].Current.Oid != 0 ) {
 				have = true ;	
 				if ( ((currenttime >= cheforder[n].Current.Time) || ( currenttime >= cheforder[n].Current.Dur + cheforder[n].currenttime )) ) {				
 					while(((currenttime >= cheforder[n].Current.Time) || ( currenttime >= cheforder[n].Current.Dur + cheforder[n].currenttime )) && have ) {
-						if ( cheforder[n].currenttime >= cheforder[n].Current.Time ) {  //·í«e­q³æ¶W¹L®É¶¡  ¨ú®ø 
+						if ( cheforder[n].currenttime >= cheforder[n].Current.Time ) {  //ç•¶å‰è¨‚å–®è¶…éæ™‚é–“  å–æ¶ˆ 
 							abortlist2.push_back(temp2) ;
 							abortlist2[m].Oid = cheforder[n].Current.Oid ;
 							abortlist2[m].Cid = n + 1 ;
@@ -591,18 +590,18 @@ void mission4( int &index ) {
 							abortlist2[m].Abort = cheforder[n].currenttime ;
 							m++;
 						}						
-						// ·í«e­q³æ©|¥¼¶W¹L®É¶¡ 
-						else if ( cheforder[n].currenttime + cheforder[n].Current.Dur > cheforder[n].Current.Time ) {  // ³B²z§¹«áµo²{¶W®É 
+						// ç•¶å‰è¨‚å–®å°šæœªè¶…éæ™‚é–“ 
+						else if ( cheforder[n].currenttime + cheforder[n].Current.Dur > cheforder[n].Current.Time ) {  // è™•ç†å®Œå¾Œç™¼ç¾è¶…æ™‚ 
 							timeoutlist2.push_back(temp2) ;
 							timeoutlist2[o].Oid = cheforder[n].Current.Oid ;
 							timeoutlist2[o].Cid = n + 1 ;
 							timeoutlist2[o].Delay = cheforder[n].currenttime - cheforder[n].Current.Arr ;
 							timeoutlist2[o].Abort = cheforder[n].currenttime + cheforder[n].Current.Dur ;
 							o++;							
-							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è 
+							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ» 
 						}
-						else {    // ·Ç®É§¹¦¨­q³æ 
-							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è 
+						else {    // æº–æ™‚å®Œæˆè¨‚å–® 
+							cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ» 
 		                    complete2.push_back(temp2) ;
 	 	     				complete2[l].Oid = cheforder[n].Current.Oid ;
 	 	     				complete2[l].Cid = n + 1 ;
@@ -614,10 +613,10 @@ void mission4( int &index ) {
 						
 						cheforder[n].Current.Oid = 0 ;
 						
-						if ( ! cheforder[n].waittinglist.empty() ) { //­Y¦î¦CÁÙ¦³­q³æ ±N¦î¦C³Ì¤W­±©ñ¤J·í«e­q³æ 
+						if ( ! cheforder[n].waittinglist.empty() ) { //è‹¥ä½‡åˆ—é‚„æœ‰è¨‚å–® å°‡ä½‡åˆ—æœ€ä¸Šé¢æ”¾å…¥ç•¶å‰è¨‚å–® 
 							
 							cheforder[n].Current = cheforder[n].waittinglist.front() ;
-							cheforder[n].waittinglist.pop() ; //§R°£¦î¦C²Ä¤@µ§ 
+							cheforder[n].waittinglist.pop() ; //åˆªé™¤ä½‡åˆ—ç¬¬ä¸€ç­† 
 							have = true ;
 							
 						}
@@ -629,7 +628,7 @@ void mission4( int &index ) {
 
 
 		// search for free chef
-		for ( int j = 0 ; j < index && ! placed ; j ++ ) { // §äªÅ¶¢ªº¼p®v µ¹¤©·s­q³æ 
+		for ( int j = 0 ; j < index && ! placed ; j ++ ) { // æ‰¾ç©ºé–’çš„å»šå¸« çµ¦äºˆæ–°è¨‚å–® 
 			if( cheforder[j].Current.Oid == 0 ) {
 				cheforder[j].Current = list1[i] ;
 				cheforder[j].currenttime = list1[i].Arr ;
@@ -638,7 +637,7 @@ void mission4( int &index ) {
 		}
 
 		// search for the smallest queue
-		for ( int k = 0 ; k < index && ! placed ; k ++ ) { // §ä¦î¦C³Ì¤pªº¼p®v 
+		for ( int k = 0 ; k < index && ! placed ; k ++ ) { // æ‰¾ä½‡åˆ—æœ€å°çš„å»šå¸« 
 			if(cheforder[k].waittinglist.size() < smallest) {
 				indexOfChef = k ;
 				smallest = cheforder[k].waittinglist.size() ;
@@ -648,7 +647,7 @@ void mission4( int &index ) {
 
 		if(!placed ) {
 			
-			if ( smallest == 3 ) {  //¦î¦C¬Òº¡   ¨ú®ø­q³æ 
+			if ( smallest == 3 ) {  //ä½‡åˆ—çš†æ»¿   å–æ¶ˆè¨‚å–® 
 				abortlist2.push_back(temp2) ;
 				abortlist2[m].Oid = list1[i].Oid ;
 				abortlist2[m].Cid = 0 ;
@@ -657,7 +656,7 @@ void mission4( int &index ) {
 				m++;
 				
 			}
-			else { //¦î¦C¨Sº¡  ±N·sªº¤@µ§­q³æ©ñ¤J¦î¦C 
+			else { //ä½‡åˆ—æ²’æ»¿  å°‡æ–°çš„ä¸€ç­†è¨‚å–®æ”¾å…¥ä½‡åˆ— 
 				cheforder[indexOfChef].waittinglist.push(list1[i]) ;
 			}			
 			
@@ -668,7 +667,7 @@ void mission4( int &index ) {
 		smallest = 3 ;
 		
 	}
-	//­q³æµ²§ô ³B²z·í«e©M¦î¦C¤ºªº­q³æ 
+	//è¨‚å–®çµæŸ è™•ç†ç•¶å‰å’Œä½‡åˆ—å…§çš„è¨‚å–® 
 	
 	for (int n = 0 ; n < index ; n++) {
 		
@@ -698,10 +697,10 @@ void mission4( int &index ) {
 				timeoutlist2[o].Delay = cheforder[n].currenttime - cheforder[n].Current.Arr ;
 				timeoutlist2[o].Abort = cheforder[n].currenttime + cheforder[n].Current.Dur ;
 				o++;				
-				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è		
+				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ»		
 			}
 			else {
-				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // §ó·s®É¨è
+				cheforder[n].currenttime = cheforder[n].currenttime + cheforder[n].Current.Dur ; // æ›´æ–°æ™‚åˆ»
 		        complete2.push_back(temp2) ;
 	 	     	complete2[l].Oid = cheforder[n].Current.Oid ;
 	 	     	complete2[l].Cid = n + 1 ;
@@ -751,7 +750,7 @@ void saveFile2( string & name ) { // save all records into a file
   ofstream fout( co.c_str() );
   fout << "	[Done List]" << endl ; 
   fout << "	OID	Delay	Departure" << endl ;
-  for ( int i = 0; i < complete.size() ; i++ ) fout << "[" << i+1 << "]	" << complete[i].Oid << "	" << complete[i].Delay << "	" << complete[i].Abort << endl; //Àx¦s¦î¦C 
+  for ( int i = 0; i < complete.size() ; i++ ) fout << "[" << i+1 << "]	" << complete[i].Oid << "	" << complete[i].Delay << "	" << complete[i].Abort << endl; //å„²å­˜ä½‡åˆ— 
   /*fout << "[Total Delay]" << endl ;
   for ( int i = 0; i < timeoutlist.size() ; i++ ) delay = delay + timeoutlist[i].Delay ;
   for ( int i = 0; i < abortlist.size() ; i++ )  delay = delay + abortlist[i].Delay ;
@@ -778,10 +777,10 @@ void saveFile3( string & name ) { // save all records into a file
   ofstream fout( co.c_str() );
   fout << "	[Abort List]" << endl ;
   fout << "	OID	CID	Delay	Abort" << endl; 
-  for ( int i = 3; i < abortlist2.size() ; i++ ) fout << "[" << i-2 << "]	" << abortlist2[i].Oid << "	" << abortlist2[i].Cid << "	" << abortlist2[i].Delay << "	" << abortlist2[i].Abort << endl; //Àx¦s¦î¦C 
+  for ( int i = 3; i < abortlist2.size() ; i++ ) fout << "[" << i-2 << "]	" << abortlist2[i].Oid << "	" << abortlist2[i].Cid << "	" << abortlist2[i].Delay << "	" << abortlist2[i].Abort << endl; //å„²å­˜ä½‡åˆ— 
   fout << "	[Timeout List]" << endl ; 
   fout << "	OID	CID	Delay	Departure" << endl ;
-  for ( int i = 0; i < timeoutlist2.size() ; i++ ) fout << "[" << i+1 << "]	" << timeoutlist2[i].Oid << "	" << timeoutlist2[i].Cid << "	" << timeoutlist2[i].Delay << "	" << timeoutlist2[i].Abort << endl; //Àx¦s¦î¦C 
+  for ( int i = 0; i < timeoutlist2.size() ; i++ ) fout << "[" << i+1 << "]	" << timeoutlist2[i].Oid << "	" << timeoutlist2[i].Cid << "	" << timeoutlist2[i].Delay << "	" << timeoutlist2[i].Abort << endl; //å„²å­˜ä½‡åˆ— 
   fout << "[Total Delay]" << endl ;
   for ( int i = 0; i < timeoutlist2.size() ; i++ ) delay = delay + timeoutlist2[i].Delay ;
   for ( int i = 3; i < abortlist2.size() ; i++ )  delay = delay + abortlist2[i].Delay ;
