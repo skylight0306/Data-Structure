@@ -1,5 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¾ô 
-
 #include <iostream>   // cout, endl
 #include <fstream>    // open, is_open, close
 #include <vector>     // vector, push_back
@@ -97,7 +95,7 @@ class Pokemon{
 };
 
 void saveFile( string &name , char c); // save all records into a file
-void DealN( string &name ); // ³B²zÀÉ¦W
+void DealN( string &name ); // è™•ç†æª”å
    
 int main(int argc, char** argv) {
 	Pokemon Pok;
@@ -143,19 +141,19 @@ int curnum = 1;
 void Pokemon::mission2( BST *&tree ) { 
     int visit = 0,largest = 0;
     if ( tree == NULL ) {
-    	cout << "ERROR :½Ğ¥ı¨Ï¥Î¥ô°È1" << endl; 
+    	cout << "ERROR :è«‹å…ˆä½¿ç”¨ä»»å‹™1" << endl; 
     	return ;
 	}
 	BST *first = tree;
 	BST *temp = tree;
 	int height = 1,max = 1,num = 0;
-	while( tree->Right != NULL ) tree = tree->Right;//¿é¤J¤£¯à¶W¹Llargestªº­È 
-	largest = tree->Cur[0].getHP();//¿é¤J¤£¯à¶W¹Llargestªº­È 
-	tree = first;//¿é¤J¤£¯à¶W¹Llargestªº­È 
+	while( tree->Right != NULL ) tree = tree->Right;//è¼¸å…¥ä¸èƒ½è¶…élargestçš„å€¼ 
+	largest = tree->Cur[0].getHP();//è¼¸å…¥ä¸èƒ½è¶…élargestçš„å€¼ 
+	tree = first;//è¼¸å…¥ä¸èƒ½è¶…élargestçš„å€¼ 
 	cout << "Input a positive num[1 ~ "  << largest << "] = " ; 
 	cin >> num;
 	if ( num > largest && num > 0) {
-		cout << "¶W¹L½d³ò,½Ğ­«·s°õ¦æ¥ô°È2" << endl; 
+		cout << "è¶…éç¯„åœ,è«‹é‡æ–°åŸ·è¡Œä»»å‹™2" << endl; 
 		return;
 	}
 	cout << "	#	Name				Total	Type1		HP	Attack	Defence" << endl;
@@ -177,7 +175,7 @@ void Pokemon::mission2( BST *&tree ) {
 void Pokemon::mission3( BST *&tree ){
 	int height = 0;
 	if ( tree == NULL ) {
-    	cout << "ERROR :½Ğ¥ı¨Ï¥Î¥ô°È1" << endl; 
+    	cout << "ERROR :è«‹å…ˆä½¿ç”¨ä»»å‹™1" << endl; 
     	return;
 	}
 	BST *first = tree;
@@ -187,12 +185,12 @@ void Pokemon::mission3( BST *&tree ){
 	  cout << tree->Cur[0].getDat() << endl ;
 	  tree->Cur.erase( tree->Cur.begin() );	
 	}
-	else if ( tree == first ) {//³Ì¤j­È¬°¾ğªº³»ºİ®É 
+	else if ( tree == first ) {//æœ€å¤§å€¼ç‚ºæ¨¹çš„é ‚ç«¯æ™‚ 
 		cout << tree->Cur[0].getDat() << endl ;
 		first = first->Left;
 		delete tree;
 	}
-	else if ( tree->Left == NULL ) {//¥ªÃäµL¸`ÂI 
+	else if ( tree->Left == NULL ) {//å·¦é‚Šç„¡ç¯€é» 
 		cout << tree->Cur[0].getDat() << endl ;
 		tree->Last->Right = NULL;
 		delete tree;
@@ -253,32 +251,32 @@ void Pokemon::traverse ( BST *&tree, int num , int &visit){
 void Pokemon::CreateTree( BST *&tree ) {
 	// ===== initialize =====
 	int height = 1,max = 1 ;
-	BST *temp = new BST ;             //¥Î¨Ó°O¿ı·í«e¤W¤@µ§¸ê®Æ 
-	tree = new BST ;                  // ·s«Ø¤@´Ê¾ğ 
-	tree->Cur.push_back(list[0]) ;    // ¶ë¤J²Ä¤@µ§ 
-	tree->Left = NULL ;               // ²Ä¤@µ§¥ªÃä¬°null 
-	tree->Right = NULL ;              // ²Ä¤@µ§¥kÃä¬°null 
+	BST *temp = new BST ;             //ç”¨ä¾†è¨˜éŒ„ç•¶å‰ä¸Šä¸€ç­†è³‡æ–™ 
+	tree = new BST ;                  // æ–°å»ºä¸€æ£µæ¨¹ 
+	tree->Cur.push_back(list[0]) ;    // å¡å…¥ç¬¬ä¸€ç­† 
+	tree->Left = NULL ;               // ç¬¬ä¸€ç­†å·¦é‚Šç‚ºnull 
+	tree->Right = NULL ;              // ç¬¬ä¸€ç­†å³é‚Šç‚ºnull 
 	BST *first = tree ;               // root = tree
 	 
 	cout << "	#	Name				Type1		HP	Attack	Defence" << endl;
-	list[1].Printsix( 1 );//¦L«e¤»µ§¸ê®Æ 
+	list[1].Printsix( 1 );//å°å‰å…­ç­†è³‡æ–™ 
 	
 	
 	// ===== build binary tree =====
 	for ( int i = 1; i < list.size(); i++ ) {
-	  	list[i].Printsix( i + 1 ) ;        // ¦L«e¤»µ§¸ê®Æ 
-	  	while ( tree != NULL )                                                     // ·ítree«ü¦Vªº¦ì¸m¤£¬OªÅªº
+	  	list[i].Printsix( i + 1 ) ;        // å°å‰å…­ç­†è³‡æ–™ 
+	  	while ( tree != NULL )                                                     // ç•¶treeæŒ‡å‘çš„ä½ç½®ä¸æ˜¯ç©ºçš„
 		{ 
-	    	temp = tree ;                                                          // ±N¸Ó¦ì¸m°O¿ı¬°¤W¤@µ§ 
-			if ( list[i].getHP() > tree->Cur[0].getHP() ) tree = tree->Right ;     // ¤ñ¸Ó¦ì¸m¤j¡A©¹¥k¨« 
-			else if ( list[i].getHP() < tree->Cur[0].getHP()) tree = tree->Left ;  // ¤ñ¸Ó¦ì¸m¤p¡A©¹¥ª¨« 
-			else if ( list[i].getHP() == tree->Cur[0].getHP() ) break ;            // ¬Ûµ¥¡A¸õ¥X 
+	    	temp = tree ;                                                          // å°‡è©²ä½ç½®è¨˜éŒ„ç‚ºä¸Šä¸€ç­† 
+			if ( list[i].getHP() > tree->Cur[0].getHP() ) tree = tree->Right ;     // æ¯”è©²ä½ç½®å¤§ï¼Œå¾€å³èµ° 
+			else if ( list[i].getHP() < tree->Cur[0].getHP()) tree = tree->Left ;  // æ¯”è©²ä½ç½®å°ï¼Œå¾€å·¦èµ° 
+			else if ( list[i].getHP() == tree->Cur[0].getHP() ) break ;            // ç›¸ç­‰ï¼Œè·³å‡º 
 			height++;
     	}
       
       
       	// ===== data -> tree =====
-     	if ( tree == NULL )  // ¦pªG¸Ó¦ì¸m¬OªÅªº 
+     	if ( tree == NULL )  // å¦‚æœè©²ä½ç½®æ˜¯ç©ºçš„ 
 	  	{ 
       		tree = new BST ;
 	  		tree->Cur.push_back(list[i]) ;
@@ -288,7 +286,7 @@ void Pokemon::CreateTree( BST *&tree ) {
 	  		if ( temp->Cur[0].getHP() < list[i].getHP() ) temp->Right = tree ;
 	  		else temp->Left = tree ;
       	}
-      	else                // ¦pªG¸Ó¦ì¸m¤£¬OªÅªº 
+      	else                // å¦‚æœè©²ä½ç½®ä¸æ˜¯ç©ºçš„ 
 			tree->Cur.push_back(list[i]) ;
 	  
 	  
@@ -317,8 +315,8 @@ void Pokemon::InputFile( string & name , string & fileNum ) {
 		fin.open( name.c_str() ) ;
 	}
 	string tempdat ;
-	getline(fin,tempdat);// ¥h±¼¼ĞÃD
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	getline(fin,tempdat);// å»æ‰æ¨™é¡Œ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
@@ -337,7 +335,7 @@ void Info::DealDat( string data ) {
       	rawR = data;
 	  	string temp;
 	  	for ( int i = 0; tabcount < 10 ; i++ ) {
-	  	  if ( data[i] == '\t' ) { // ±qrawRÅª¨ú¸ê°T(sNO.gNO.cname.gname) 
+	  	  if ( data[i] == '\t' ) { // å¾rawRè®€å–è³‡è¨Š(sNO.gNO.cname.gname) 
             tabcount++;
 			tabend = i;
 			if ( tabcount == 1 ) {
