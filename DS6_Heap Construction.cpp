@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¾ô 
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -12,18 +11,18 @@ int gright = false;
 class Info{
 	private :
        string rawR; // raw data of one record
-       int ID; //°ß¤@§Ç¸¹ 
-       int SID; // ¾Ç®Õ¥N½X 
+       int ID; //å”¯ä¸€åºè™Ÿ 
+       int SID; // å­¸æ ¡ä»£ç¢¼ 
        string cName; // college name
-       int DID; // ¬ì¨t¥N½X
-       string dName; // ¬ì¨t¦WºÙ 
-       string school; // ¤é¶¡¶i­× 
-       int level; // µ¥¯Å§O 
-       int sNo;// ¾Ç¥Í¼Æ 
-       int tNo; // ±Ğ®v¼Æ 
-       int gNo; // ¤W¾Ç¦~«×²¦·~¥Í¼Æ
-       string cityName; // ¿¤¥«¦WºÙ 
-       string Dif; // Åé¨t§O 
+       int DID; // ç§‘ç³»ä»£ç¢¼
+       string dName; // ç§‘ç³»åç¨± 
+       string school; // æ—¥é–“é€²ä¿® 
+       int level; // ç­‰ç´šåˆ¥ 
+       int sNo;// å­¸ç”Ÿæ•¸ 
+       int tNo; // æ•™å¸«æ•¸ 
+       int gNo; // ä¸Šå­¸å¹´åº¦ç•¢æ¥­ç”Ÿæ•¸
+       string cityName; // ç¸£å¸‚åç¨± 
+       string Dif; // é«”ç³»åˆ¥ 
 	public :
 	  Info *Left;
 	  Info *Right;
@@ -99,7 +98,7 @@ class Tree{
 };
 
 void saveFile( string &name , char c); // save all records into a file
-void DealN( string &name ); // ³B²zÀÉ¦W
+void DealN( string &name ); // è™•ç†æª”å
    
 int main(int argc, char** argv) {
 	Tree Sch;
@@ -169,7 +168,7 @@ void Tree::BuildMaxHeap(){
 	int root = 1, left = 2*root, right = 2*root + 1;
 	for ( root = 1; root < list.size(); ) 
 	{
-		if ( left < list.size() ) //¦b¥ª¸`ÂI·s¼W 
+		if ( left < list.size() ) //åœ¨å·¦ç¯€é»æ–°å¢ 
 		{
 			for ( int i = left; i != 1; i = i / 2 ) 
 			{
@@ -178,7 +177,7 @@ void Tree::BuildMaxHeap(){
 			}
 	    }
 		else break;
-		if ( right < list.size() ) //¦b¥k¸`ÂI·s¼W 
+		if ( right < list.size() ) //åœ¨å³ç¯€é»æ–°å¢ 
 		{
 		    for ( int i = right; i != 1; i = i / 2 ) 
 			{
@@ -197,7 +196,7 @@ void Tree::CheckMinHeap(){
 	int root = 1, left = 2*root, right = 2*root + 1;
 	for ( root = 1; root < ldeap.size(); ) 
 	{
-		if ( left < ldeap.size() ) //¦b¥ª¸`ÂI·s¼W 
+		if ( left < ldeap.size() ) //åœ¨å·¦ç¯€é»æ–°å¢ 
 		{
 
 			for ( int i = left; i != 1; i = i / 2 ) 
@@ -207,7 +206,7 @@ void Tree::CheckMinHeap(){
 			}
 	    }
 		else break;
-		if ( right < ldeap.size() ) //¦b¥k¸`ÂI·s¼W 
+		if ( right < ldeap.size() ) //åœ¨å³ç¯€é»æ–°å¢ 
 		{
 		    for ( int i = right; i != 1; i = i / 2 ) 
 			{
@@ -226,7 +225,7 @@ void Tree::CheckMaxHeap(){
 	int root = 1, left = 2*root, right = 2*root + 1;
 	for ( root = 1; root < rdeap.size(); ) 
 	{
-		if ( left < rdeap.size() ) //¦b¥ª¸`ÂI·s¼W
+		if ( left < rdeap.size() ) //åœ¨å·¦ç¯€é»æ–°å¢
 		{
 			for ( int i = left; i != 1; i = i / 2 ) 
 			{
@@ -235,7 +234,7 @@ void Tree::CheckMaxHeap(){
 			}
 	    }
 		else break;
-		if ( right < rdeap.size() ) //¦b¥k¸`ÂI·s¼W
+		if ( right < rdeap.size() ) //åœ¨å³ç¯€é»æ–°å¢
 		{
 		    for ( int i = right; i != 1; i = i / 2 ) 
 			{
@@ -251,39 +250,39 @@ void Tree::CheckMaxHeap(){
 }
 
 
-void Tree::Sortlist( int &temp ){ //vector¤À§O©ñ¤J¥ª¤l¾ğvector©M¥k¤l¾ğvector 
+void Tree::Sortlist( int &temp ){ //vectoråˆ†åˆ¥æ”¾å…¥å·¦å­æ¨¹vectorå’Œå³å­æ¨¹vector 
 	int root = 1, total = 0;
-	ldeap.push_back(list[0]);//±N²Ä0¶µªÅ¥X¨Ó ¤£©ñªF¦è 
-	rdeap.push_back(list[0]);//±N²Ä0¶µªÅ¥X¨Ó ¤£©ñªF¦è 
-	for( total = 0; total < list.size() - 1; root = root * 2 ) //vector¬O§_¥ş³¡Åª¥X 
+	ldeap.push_back(list[0]);//å°‡ç¬¬0é …ç©ºå‡ºä¾† ä¸æ”¾æ±è¥¿ 
+	rdeap.push_back(list[0]);//å°‡ç¬¬0é …ç©ºå‡ºä¾† ä¸æ”¾æ±è¥¿ 
+	for( total = 0; total < list.size() - 1; root = root * 2 ) //vectoræ˜¯å¦å…¨éƒ¨è®€å‡º 
 	{
-		for( int i = root; i > 0 && total < list.size() - 1; i-- ) //©ñ¸m¥ª¤l¾ğvector 
+		for( int i = root; i > 0 && total < list.size() - 1; i-- ) //æ”¾ç½®å·¦å­æ¨¹vector 
 		{
 			total++;
 			gright = false;
-			ldeap.push_back(list[total]); // ´¡¤J¤@­Ónode
+			ldeap.push_back(list[total]); // æ’å…¥ä¸€å€‹node
 			//cout << list[total].getsNo() << "\n";
-			if ( ldeap[ldeap.size() - 1].getsNo() > rdeap[ ( ldeap.size() - 1 ) / 2].getsNo() && ldeap.size() != 2 )// ½T»{¹ïÀ³ÂIªº¤÷¸`ÂI§_²Å¦XDEAP ³W«h 
+			if ( ldeap[ldeap.size() - 1].getsNo() > rdeap[ ( ldeap.size() - 1 ) / 2].getsNo() && ldeap.size() != 2 )// ç¢ºèªå°æ‡‰é»çš„çˆ¶ç¯€é»å¦ç¬¦åˆDEAP è¦å‰‡ 
 			{
-				swap( ldeap[ldeap.size() - 1], rdeap[ ( ldeap.size() - 1 ) / 2] );//¨â­Ó¹ïÀ³ÂI¥æ´« 
+				swap( ldeap[ldeap.size() - 1], rdeap[ ( ldeap.size() - 1 ) / 2] );//å…©å€‹å°æ‡‰é»äº¤æ› 
 				temp = ldeap[ldeap.size() - 1].getsNo();
 			}
-			CheckMinHeap(); // ³Ì¤p°ïÅ|
-			CheckMaxHeap(); // ³Ì¤j°ï¿n
+			CheckMinHeap(); // æœ€å°å †ç–Š
+			CheckMaxHeap(); // æœ€å¤§å †ç©
 		}
-		for( int i = root; i > 0 && total < list.size() - 1; i-- ) //©ñ¸m¥k¤l¾ğvector 
+		for( int i = root; i > 0 && total < list.size() - 1; i-- ) //æ”¾ç½®å³å­æ¨¹vector 
 		{
 			total++;
 			gright = true;
-			rdeap.push_back(list[total]); // ´¡¤J¤@­Ónode
+			rdeap.push_back(list[total]); // æ’å…¥ä¸€å€‹node
 			//cout << list[total].getsNo() << "\n";
-			if ( rdeap[rdeap.size() - 1].getsNo() < ldeap[rdeap.size() - 1].getsNo() )// ½T»{¹ïÀ³ÂI¬O§_²Å¦XDEAP ³W«h 
+			if ( rdeap[rdeap.size() - 1].getsNo() < ldeap[rdeap.size() - 1].getsNo() )// ç¢ºèªå°æ‡‰é»æ˜¯å¦ç¬¦åˆDEAP è¦å‰‡ 
 			{
-				swap( rdeap[rdeap.size() - 1], ldeap[rdeap.size() - 1] );//¨â­Ó¹ïÀ³ÂI¥æ´« 
+				swap( rdeap[rdeap.size() - 1], ldeap[rdeap.size() - 1] );//å…©å€‹å°æ‡‰é»äº¤æ› 
 				temp = rdeap[rdeap.size() - 1].getsNo();
 			}
-			CheckMinHeap(); // ³Ì¤p°ïÅ|
-			CheckMaxHeap(); // ³Ì¤j°ï¿n
+			CheckMinHeap(); // æœ€å°å †ç–Š
+			CheckMaxHeap(); // æœ€å¤§å †ç©
 		}
 	}
 	
@@ -295,21 +294,21 @@ void Tree::InputFile( string & name , string & fileNum ) {
 	list.clear();
 	ldeap.clear();
 	rdeap.clear();
-    DealN( name );// ³B²zINPUT
+    DealN( name );// è™•ç†INPUT
 	fin.open( name.c_str() );
     while ( !fin ) {
     	cout << "### " << name << " does not exist! ###" << endl;
     	cout << "input 501,502.....[0] quit: " << endl;
 		cin >> name;
-		DealN( name );// ³B²zINPUT
+		DealN( name );// è™•ç†INPUT
 		fin.open( name.c_str() );
 	}
 	string tempdat;
 	list.push_back(binary);
-	getline(fin,tempdat);// ¥h±¼¼ĞÃD
+	getline(fin,tempdat);// å»æ‰æ¨™é¡Œ
 	getline(fin,tempdat);
 	getline(fin,tempdat);
-	while ( getline(fin,tempdat) ) { // ¨C¦¸Åª¤@¦æ
+	while ( getline(fin,tempdat) ) { // æ¯æ¬¡è®€ä¸€è¡Œ
 	    binary.DealDat( tempdat ) ;// input data to class
     	list.push_back(binary); // add data to last one;
 	}
@@ -334,7 +333,7 @@ void Info::DealDat( string data ) {
       	gnum++;
 	  	string temp;
 	  	for ( int i = 0; tabcount < 10 ; i++ ) {
-	  	  if ( data[i] == '\t' ) { // ±qrawRÅª¨ú¸ê°T(sNO.gNO.cname.gname) 
+	  	  if ( data[i] == '\t' ) { // å¾rawRè®€å–è³‡è¨Š(sNO.gNO.cname.gname) 
             tabcount++;
 			tabend = i;
 			if ( tabcount == 1 ) {
