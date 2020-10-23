@@ -1,3 +1,5 @@
+// 1. Build a max heap
+// 2. Build a Deap
 #include <iostream>
 #include <stdio.h>
 #include <vector>
