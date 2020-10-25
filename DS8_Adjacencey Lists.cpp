@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¹´ 
 #include <iostream>
 #include <vector>
 #include <string.h>
@@ -9,15 +8,15 @@ using namespace std;
 
 
 struct Allstat{
-    char putID[10] ;  //µo°TªÌID 
-    char getID[10] ;  //¦¬°TªÌID 
-    float weight ;  //¶q¤ÆÅv­« 
+    char putID[10] ;  //ç™¼è¨Šè€…ID 
+    char getID[10] ;  //æ”¶è¨Šè€…ID 
+    float weight ;  //é‡åŒ–æ¬Šé‡ 
 };
 
 struct PutList{
 	Allstat stat;
 	vector<Allstat> getlist;
-    int Influence; //¼vÅT¤O 
+    int Influence; //å½±éŸ¿åŠ› 
 };
 
 
@@ -62,63 +61,63 @@ void AdjacencyList::Mission1(){
     InputFile( name );
     if ( list.size() == 0 ) return; 
     int move = 0;
-	//¦¹®ÉÀÉ®×¤w¶}¦¨ 
+	//æ­¤æ™‚æª”æ¡ˆå·²é–‹æˆ 
 	PutList temp;
-	for ( int i = 0; i < list.size(); i++) // vector±½¨ì²Äiµ§¸ê®Æ 
+	for ( int i = 0; i < list.size(); i++) // vectoræƒåˆ°ç¬¬iç­†è³‡æ–™ 
 	{
-		if ( putlist.size() == 0 ) {//¨S¦³¥D°}¦C®É 
+		if ( putlist.size() == 0 ) {//æ²’æœ‰ä¸»é™£åˆ—æ™‚ 
 		    putlist.push_back(temp);
 		    putlist[0].stat = list[i]; 
-		    putlist[0].getlist.push_back(list[i]);//·s¼W¦¬°TªÌ¸ê®Æ 
-		    putlist.push_back(temp);//¥D°}¦C·s¼W¦¬°TªÌ¸ê®Æ 
+		    putlist[0].getlist.push_back(list[i]);//æ–°å¢æ”¶è¨Šè€…è³‡æ–™ 
+		    putlist.push_back(temp);//ä¸»é™£åˆ—æ–°å¢æ”¶è¨Šè€…è³‡æ–™ 
 		    putlist[1].stat = list[i]; 
-		    strcpy( putlist[1].stat.putID, list[i].getID );//¥D°}¦C·s¼W¸ê®Æ 
+		    strcpy( putlist[1].stat.putID, list[i].getID );//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 		} // if 
 		else {
 			int j = 0;
 		    while ( j < putlist.size() ) 
 		    {
-				if ( strcmp( putlist[j].stat.putID, list[i].putID ) == 0  ) {//§ä¨ì¬Û¦Pµo°T¤H 
-					putlist[j].getlist.push_back(list[i]);//¥D°}¦C·s¼W¸ê®Æ 
-					int num = 0;//³B²z¦¬°T¤H¥á¥h¥D°}¦C°İÃD 
+				if ( strcmp( putlist[j].stat.putID, list[i].putID ) == 0  ) {//æ‰¾åˆ°ç›¸åŒç™¼è¨Šäºº 
+					putlist[j].getlist.push_back(list[i]);//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
+					int num = 0;//è™•ç†æ”¶è¨Šäººä¸Ÿå»ä¸»é™£åˆ—å•é¡Œ 
 			        while( num < putlist.size() ) {
-					    if ( strcmp( putlist[num].stat.putID, list[i].getID ) == 0  ) {//§ä¨ì¬Û¦Pµo°T¤H 
+					    if ( strcmp( putlist[num].stat.putID, list[i].getID ) == 0  ) {//æ‰¾åˆ°ç›¸åŒç™¼è¨Šäºº 
 						    break;
 					    } // if
 					    else if ( num == putlist.size() - 1 ) {
-						    putlist.push_back(temp);//¥D°}¦C·s¼W¸ê®Æ 
+						    putlist.push_back(temp);//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 				            putlist[putlist.size() - 1].stat = list[i];
-						    strcpy( putlist[putlist.size() - 1].stat.putID, list[i].getID );//¥D°}¦C·s¼W¸ê®Æ 
+						    strcpy( putlist[putlist.size() - 1].stat.putID, list[i].getID );//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 						    break; 
 					    }
 					    num++;
-				    }// while ³B²z¦¬°T¤H¥á¥h¥D°}¦C°İÃD 
+				    }// while è™•ç†æ”¶è¨Šäººä¸Ÿå»ä¸»é™£åˆ—å•é¡Œ 
 				    break;
 				} // if
-				else if ( j == putlist.size() - 1 ) {//¨S¦³¬Û¦Pµo°T¤H
-				    putlist.push_back(temp);//¥D°}¦C·s¼W¸ê®Æ 
+				else if ( j == putlist.size() - 1 ) {//æ²’æœ‰ç›¸åŒç™¼è¨Šäºº
+				    putlist.push_back(temp);//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 				    putlist[putlist.size() - 1].stat = list[i]; 
-		            putlist[putlist.size() - 1].getlist.push_back(list[i]);//·s¼W¦¬°TªÌ¸ê®Æ 
-		            int num = 0;//³B²z¦¬°T¤H¥á¥h¥D°}¦C°İÃD 
+		            putlist[putlist.size() - 1].getlist.push_back(list[i]);//æ–°å¢æ”¶è¨Šè€…è³‡æ–™ 
+		            int num = 0;//è™•ç†æ”¶è¨Šäººä¸Ÿå»ä¸»é™£åˆ—å•é¡Œ 
 			        while( num < putlist.size() ) {
-					    if ( strcmp( putlist[num].stat.putID, list[i].getID ) == 0  ) {//§ä¨ì¬Û¦Pµo°T¤H 
+					    if ( strcmp( putlist[num].stat.putID, list[i].getID ) == 0  ) {//æ‰¾åˆ°ç›¸åŒç™¼è¨Šäºº 
 						    break;
 					    } // if
 					    else if ( num == putlist.size() - 1 ) {
-						    putlist.push_back(temp);//¥D°}¦C·s¼W¸ê®Æ 
+						    putlist.push_back(temp);//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 				            putlist[putlist.size() - 1].stat = list[i];
-						    strcpy( putlist[putlist.size() - 1].stat.putID, list[i].getID );//¥D°}¦C·s¼W¸ê®Æ 
+						    strcpy( putlist[putlist.size() - 1].stat.putID, list[i].getID );//ä¸»é™£åˆ—æ–°å¢è³‡æ–™ 
 						    break; 
 					    }
 					    num++;
-				    }// while ³B²z¦¬°T¤H¥á¥h¥D°}¦C°İÃD 
+				    }// while è™•ç†æ”¶è¨Šäººä¸Ÿå»ä¸»é™£åˆ—å•é¡Œ 
 				    break;
 				} // else if
 				
 	
 				j++;
 		    }
-	    } // else³B²z¥D°}¦C´¡¤J 
+	    } // elseè™•ç†ä¸»é™£åˆ—æ’å…¥ 
 	} // for
 	
 	for ( int i = 0; i < putlist.size(); i++ ) {
@@ -133,67 +132,67 @@ void AdjacencyList::Mission1(){
 		fout << putlist[i].stat.putID << "	" << endl;
 		for ( int j = 0; j < putlist[i].getlist.size(); j++ ) fout << "	" << putlist[i].getlist[j].getID << "	" << putlist[i].getlist[j].weight << endl ;
 	}
-	cout << "Pairs" << name << ".adj «ØÀÉ§¹¦¨ " << endl; 
+	cout << "Pairs" << name << ".adj å»ºæª”å®Œæˆ " << endl; 
 }
 
 
 void AdjacencyList::Mission2(){
 	if ( putlist.size() == 0 ) {
-		cout << "½Ğ¥ı¨Ï¥Î¥ô°È1" << endl;
+		cout << "è«‹å…ˆä½¿ç”¨ä»»å‹™1" << endl;
 		return;
 		 
 	}
-	for ( int i = 0; i < putlist.size(); i++ )  //ªì©l¤Æ 
+	for ( int i = 0; i < putlist.size(); i++ )  //åˆå§‹åŒ– 
 		putlist[i].Influence = 0;
 	
 
 
 
 	int num = 0;
-	Allstat Cur; //·í«e¸ê®Æ 
-	bool exist = false ; //ÀË¬d¬O§_¦s¦b¦î¦C¤¤ 
-	for ( int i = 0 ; i < putlist.size() ; i++ )  // ©Ò¦³¥D°}¦C¸ê®Æ¬O§_¥ş³¡¶]§¹ 
+	Allstat Cur; //ç•¶å‰è³‡æ–™ 
+	bool exist = false ; //æª¢æŸ¥æ˜¯å¦å­˜åœ¨ä½‡åˆ—ä¸­ 
+	for ( int i = 0 ; i < putlist.size() ; i++ )  // æ‰€æœ‰ä¸»é™£åˆ—è³‡æ–™æ˜¯å¦å…¨éƒ¨è·‘å®Œ 
 	{
 			//cout << "2";
-		//   ±N¦¬°TªÌ©ñ¤J¦î¦Cµ¥«İ³B²z 
-		for ( int j = 0 ; j < putlist[i].getlist.size() ; j++ ) // ±N²Ä i µ§¸ê®Æªº¦¬°TªÌ©ñ¤J¦î¦C 
+		//   å°‡æ”¶è¨Šè€…æ”¾å…¥ä½‡åˆ—ç­‰å¾…è™•ç† 
+		for ( int j = 0 ; j < putlist[i].getlist.size() ; j++ ) // å°‡ç¬¬ i ç­†è³‡æ–™çš„æ”¶è¨Šè€…æ”¾å…¥ä½‡åˆ— 
 		{
 			//	cout << "3";
-			waittinglist.push(putlist[i].getlist[j]) ; // ©ñ¤J¦î¦C
-			allwaitlist.push_back(putlist[i].getlist[j]); // ±N¸Óµo°TªÌ©Ò¦³¤w©ñ¤J¦î¦Cªº¦¬°TªÌ¬ö¿ı¦bvector Á×§K­«½Æ©ñ¤J¦î¦C 
+			waittinglist.push(putlist[i].getlist[j]) ; // æ”¾å…¥ä½‡åˆ—
+			allwaitlist.push_back(putlist[i].getlist[j]); // å°‡è©²ç™¼è¨Šè€…æ‰€æœ‰å·²æ”¾å…¥ä½‡åˆ—çš„æ”¶è¨Šè€…ç´€éŒ„åœ¨vector é¿å…é‡è¤‡æ”¾å…¥ä½‡åˆ— 
 		}
 			//cout << "4";
-		//  ³B²z¦î¦Cªº©Ò¦³¸ê®Æ 
-		while ( !waittinglist.empty() ) // ¦î¦CªÅ ¤~¯à¸õ¥X 
+		//  è™•ç†ä½‡åˆ—çš„æ‰€æœ‰è³‡æ–™ 
+		while ( !waittinglist.empty() ) // ä½‡åˆ—ç©º æ‰èƒ½è·³å‡º 
 		{ 
 		//	cout << "5";
-			Cur = waittinglist.front(); // Cur¬°¦î¦C³Ì¤W­±¸ê®Æ
-			for ( num = 0 ; num < putlist.size(); num++ ) //´M§äCur¦b¥D°}¦Cªº­şµ§¸ê®Æ 
+			Cur = waittinglist.front(); // Curç‚ºä½‡åˆ—æœ€ä¸Šé¢è³‡æ–™
+			for ( num = 0 ; num < putlist.size(); num++ ) //å°‹æ‰¾Curåœ¨ä¸»é™£åˆ—çš„å“ªç­†è³‡æ–™ 
 			{
 				//	cout << "6";
-				if ( strcmp ( putlist[num].stat.putID, Cur.getID ) == 0 ) //±q¥D°}¦C¤¤§ä´M¦¬°T¤Hªº¸ê®Æ 
-					break; //¥D°}¦C²Ä num µ§¬°¦¬°T¤H¸ê®Æ  
+				if ( strcmp ( putlist[num].stat.putID, Cur.getID ) == 0 ) //å¾ä¸»é™£åˆ—ä¸­æ‰¾å°‹æ”¶è¨Šäººçš„è³‡æ–™ 
+					break; //ä¸»é™£åˆ—ç¬¬ num ç­†ç‚ºæ”¶è¨Šäººè³‡æ–™  
 			}
 			
-			// ÀË¬d²Ä num µ§¸ê®Æªº¦¬°TªÌ¨Ã§â¥L©ñ¤J¦î¦C¤¤ 
-			for ( int j = 0 ; j < putlist[num].getlist.size() ; j++ ) // ±N²Ä i µ§¸ê®Æªº¦¬°TªÌ©ñ¤J¦î¦C 
+			// æª¢æŸ¥ç¬¬ num ç­†è³‡æ–™çš„æ”¶è¨Šè€…ä¸¦æŠŠä»–æ”¾å…¥ä½‡åˆ—ä¸­ 
+			for ( int j = 0 ; j < putlist[num].getlist.size() ; j++ ) // å°‡ç¬¬ i ç­†è³‡æ–™çš„æ”¶è¨Šè€…æ”¾å…¥ä½‡åˆ— 
 			{
 			//	cout << "7";
 				exist = false;
-				for ( int a = 0; a < allwaitlist.size(); a++ ) //ÀË¬d¦¬°TªÌ¬O§_¦s¤J¦î¦C¹L 
+				for ( int a = 0; a < allwaitlist.size(); a++ ) //æª¢æŸ¥æ”¶è¨Šè€…æ˜¯å¦å­˜å…¥ä½‡åˆ—é 
 				{
 					//	cout << "8";
-					if ( strcmp( allwaitlist[a].getID, putlist[num].getlist[j].getID ) == 0 ) //§ä¨ì¬Û¦P¸ê®Æ 
+					if ( strcmp( allwaitlist[a].getID, putlist[num].getlist[j].getID ) == 0 ) //æ‰¾åˆ°ç›¸åŒè³‡æ–™ 
 						exist = true;
 				}
 				
 				if ( !exist && strcmp( putlist[i].stat.putID, putlist[num].getlist[j].getID ) != 0 )
-					waittinglist.push(putlist[num].getlist[j]) ; // ©ñ¤J¦î¦C 
-					allwaitlist.push_back(putlist[num].getlist[j]); // ±N¸Óµo°TªÌ©Ò¦³¤w©ñ¤J¦î¦Cªº¦¬°TªÌ¬ö¿ı¦bvector Á×§K­«½Æ©ñ¤J¦î¦C 
+					waittinglist.push(putlist[num].getlist[j]) ; // æ”¾å…¥ä½‡åˆ— 
+					allwaitlist.push_back(putlist[num].getlist[j]); // å°‡è©²ç™¼è¨Šè€…æ‰€æœ‰å·²æ”¾å…¥ä½‡åˆ—çš„æ”¶è¨Šè€…ç´€éŒ„åœ¨vector é¿å…é‡è¤‡æ”¾å…¥ä½‡åˆ— 
 			}
 				//cout << "9";
-			putlist[i].Influence++ ; // ²Ä i µ§ªº¼vÅT¤O 
-			waittinglist.pop(); // ²¾°£¦î¦C³Ì¤W­±¸ê®Æ 
+			putlist[i].Influence++ ; // ç¬¬ i ç­†çš„å½±éŸ¿åŠ› 
+			waittinglist.pop(); // ç§»é™¤ä½‡åˆ—æœ€ä¸Šé¢è³‡æ–™ 
 		
 		} 
 		allwaitlist.clear();  
@@ -216,14 +215,14 @@ void AdjacencyList::Mission2(){
 	
 }
 void AdjacencyList::InputFile( string & name ) {
-	fstream file;// INPUTFILEªº«Å§i 
+	fstream file;// INPUTFILEçš„å®£å‘Š 
 	int stNo = 0;
 	cout << "Input a file number,[0] quit: ";
-	cin >> name;//ÀÉ®×¦WºÙ 
+	cin >> name;//æª”æ¡ˆåç¨± 
 	if ( !name.compare( "0" ) ) return; 
-	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//¶}±ÒÀÉ®× 
+	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//é–‹å•Ÿæª”æ¡ˆ 
     if ( !file.is_open() ) return; // no such file
-	//¦¹®ÉÀÉ®×¤w¶}¦¨ 
+	//æ­¤æ™‚æª”æ¡ˆå·²é–‹æˆ 
 	if ( file.is_open() ) {
 		file.seekg( 0, file.end );
 		stNo = file.tellg() / sizeof(stat);
