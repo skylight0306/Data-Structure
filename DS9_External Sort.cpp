@@ -1,4 +1,3 @@
-//¨t¯Å: ¸ê°T¤G¥Ò 10627134 ³\´Jµ¾ ¸ê°T¤G¥Ò 10627149 ³\?¹´ 
 #include <iostream>
 #include <vector>
 #include <string.h>
@@ -9,9 +8,9 @@ using namespace std;
 
 
 struct Allstat{
-    char putID[10] ;  //µo°TªÌID 
-    char getID[10] ;  //¦¬°TªÌID 
-    float weight ;  //¶q¤ÆÅv­« 
+    char putID[10] ;  //ç™¼è¨Šè€…ID 
+    char getID[10] ;  //æ”¶è¨Šè€…ID 
+    float weight ;  //é‡åŒ–æ¬Šé‡ 
 };
 
 struct SaveList{
@@ -21,14 +20,14 @@ struct SaveList{
 
 class ExternalSort{
 	private :
-		fstream file;// INPUTFILEªº«Å§i 
+		fstream file;// INPUTFILEçš„å®£å‘Š 
 		int filecount;
 		string name;
 	public :
 	    Allstat stat;
   	    vector<Allstat> list;
   	    vector<SaveList> slist; 
-  	    void SelectSort();//³B²z¤º³¡±Æ§Çªº200µ§¸ê®Æ 
+  	    void SelectSort();//è™•ç†å…§éƒ¨æ’åºçš„200ç­†è³‡æ–™ 
   	    void BubbleSort();
   	    void InputFile();
   	    void Mission1();
@@ -64,10 +63,10 @@ void ExternalSort::Mission1() {
 	double insclockstart,insclockend;
 	double extclockstart,extclockend;
 	insclockstart = clock();
-	InsertionSort();//³B²z¤º³¡±Æ§Ç
+	InsertionSort();//è™•ç†å…§éƒ¨æ’åº
 	insclockend = clock();
 	extclockstart = clock();
-	ExternalMerge();//¦X¨Ö¥~³¡±Æ§Ç 
+	ExternalMerge();//åˆä½µå¤–éƒ¨æ’åº 
 	extclockend = clock();
 	cout << "the Execution time ..." << endl;
 	cout << "Internal Sort = " << insclockend - insclockstart << " ms" << endl;
@@ -77,14 +76,14 @@ void ExternalSort::Mission1() {
 }   
 
 void ExternalSort::InsertionSort(){
-	fstream outFile;// OUTPUTFILEªº«Å§i 
+	fstream outFile;// OUTPUTFILEçš„å®£å‘Š 
 	int stNo = 0;
 	cout << "Input a file number,[0] quit: ";
-	cin >> name;//ÀÉ®×¦WºÙ 
+	cin >> name;//æª”æ¡ˆåç¨± 
 	if ( !name.compare( "0" ) ) return; 
-	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//¶}±ÒÀÉ®× 
+	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//é–‹å•Ÿæª”æ¡ˆ 
     if ( !file.is_open() ) return; // no such file
-	//¦¹®ÉÀÉ®×¤w¶}¦¨ 
+	//æ­¤æ™‚æª”æ¡ˆå·²é–‹æˆ 
 	
 	if ( file.is_open() ) {
 		file.seekg( 0, file.end );
@@ -93,18 +92,18 @@ void ExternalSort::InsertionSort(){
 		int all = stNo / 200, index = -1;
 		filecount = all;
 		for ( int i = 0; i < stNo; ) {
-		    for ( int j = 0; j < 200 && i < stNo; j++ ) {//¤@¦¸¥uÅª200µ§¸ê®Æ ¥HÀ³¥I°O¾ĞÅé¤£¨¬ªº¥i¯à 
+		    for ( int j = 0; j < 200 && i < stNo; j++ ) {//ä¸€æ¬¡åªè®€200ç­†è³‡æ–™ ä»¥æ‡‰ä»˜è¨˜æ†¶é«”ä¸è¶³çš„å¯èƒ½ 
 			    file.read((char *)& stat, sizeof(stat) );
 			    list.push_back( stat );
 			    i++;
 		    }
 		    index++;
 		    BubbleSort();
-		    // ¤U¤@¦æ ¼g¦¨ÀÉ®× EX: sorted501_94_0  
+		    // ä¸‹ä¸€è¡Œ å¯«æˆæª”æ¡ˆ EX: sorted501_94_0  
 		    char alls[3],indexs[3];
 			sprintf(alls, "%d", all);
 			sprintf(indexs, "%d", index);
-		    outFile.open( ( "sorted" + name + "_" + alls + "_" + indexs + ".bin" ).c_str(), fstream::out | fstream::binary);//¼g¤JÀÉ®× 
+		    outFile.open( ( "sorted" + name + "_" + alls + "_" + indexs + ".bin" ).c_str(), fstream::out | fstream::binary);//å¯«å…¥æª”æ¡ˆ 
 		    for ( int num = 0; num < list.size(); num++ ) {
 		    	outFile.write((char *)& list[num], sizeof(list[num])) ;
 			}
@@ -117,7 +116,7 @@ void ExternalSort::InsertionSort(){
 }
 
 void ExternalSort::test() {
-	file.open( "sorted501_47_16.bin", fstream::in | fstream::binary);//¶}±ÒÀÉ®× 
+	file.open( "sorted501_47_16.bin", fstream::in | fstream::binary);//é–‹å•Ÿæª”æ¡ˆ 
 	for ( int i = 0; i < 200; i++ ) {
 		file.read((char *)& stat, sizeof(stat) );
 		cout << stat.weight << endl;
@@ -142,8 +141,8 @@ void ExternalSort::ExternalMerge(){
 	    	sprintf(indexs, "%d", i);
 	    	sprintf(indexs2, "%d", i + 1);
 	    
-	    	File1.open( ( "sorted" + name + "_" + alls + "_" + indexs + ".bin" ).c_str(), fstream::in | fstream::binary);//¼g¤JÀÉ®×   	
-	    	File2.open( ( "sorted" + name + "_" + alls + "_" + indexs2 + ".bin" ).c_str(), fstream::in | fstream::binary);//¼g¤JÀÉ®× 
+	    	File1.open( ( "sorted" + name + "_" + alls + "_" + indexs + ".bin" ).c_str(), fstream::in | fstream::binary);//å¯«å…¥æª”æ¡ˆ   	
+	    	File2.open( ( "sorted" + name + "_" + alls + "_" + indexs2 + ".bin" ).c_str(), fstream::in | fstream::binary);//å¯«å…¥æª”æ¡ˆ 
 	    	sprintf(outalls, "%d",  files / 2 );
 	    	sprintf(outindexs, "%d", i / 2);
 	    	outFile1.open( ( "sorted" + name + "_" + outalls + "_" + outindexs + ".bin" ).c_str(), fstream::out | fstream::binary );
@@ -189,14 +188,14 @@ void ExternalSort::ExternalMerge(){
 }
 
 void ExternalSort::Mission2(){	
-	fstream outFile;// OUTPUTFILEªº«Å§i 
+	fstream outFile;// OUTPUTFILEçš„å®£å‘Š 
 	int stNo = 0;
 	cout << "Input a file number,[0] quit: ";
-	cin >> name;//ÀÉ®×¦WºÙ 
+	cin >> name;//æª”æ¡ˆåç¨± 
 	if ( !name.compare( "0" ) ) return; 
-	file.open( ( "sorted" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//¶}±ÒÀÉ®× 
+	file.open( ( "sorted" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//é–‹å•Ÿæª”æ¡ˆ 
     if ( !file.is_open() ) return; // no such file
-	//¦¹®ÉÀÉ®×¤w¶}¦¨ 
+	//æ­¤æ™‚æª”æ¡ˆå·²é–‹æˆ 
 	
 	float cur = 0.0; // current weight
 	int offset = 0; //Displacement
@@ -285,11 +284,11 @@ void ExternalSort::InputFile() {
 	int stNo = 0;
 	string name;
 	cout << "Input a file number,[0] quit: ";
-	cin >> name;//ÀÉ®×¦WºÙ 
+	cin >> name;//æª”æ¡ˆåç¨± 
 	if ( !name.compare( "0" ) ) return; 
-	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//¶}±ÒÀÉ®× 
+	file.open( ( "pairs" + name + ".bin" ).c_str(), fstream::in | fstream::binary);//é–‹å•Ÿæª”æ¡ˆ 
     if ( !file.is_open() ) return; // no such file
-	//¦¹®ÉÀÉ®×¤w¶}¦¨ 
+	//æ­¤æ™‚æª”æ¡ˆå·²é–‹æˆ 
 	if ( file.is_open() ) {
 		file.seekg( 0, file.end );
 		stNo = file.tellg() / sizeof(stat);
@@ -303,8 +302,8 @@ void ExternalSort::InputFile() {
 } 
 
 void ExternalSort::BubbleSort(){
-	for ( int i = 0; i < list.size(); i++ ) { // ©|¥¼±Æ§Ç¦¨¥\ªº¸ê®Æ¦C 
-		for ( int current = 0; current + 1 < list.size() - i ; current++ ) { // ¥¿¦b¹ï¤ñ¤j¤p 
+	for ( int i = 0; i < list.size(); i++ ) { // å°šæœªæ’åºæˆåŠŸçš„è³‡æ–™åˆ— 
+		for ( int current = 0; current + 1 < list.size() - i ; current++ ) { // æ­£åœ¨å°æ¯”å¤§å° 
 			if( list[current].weight < list[current + 1].weight ) swap(list[current], list[current + 1]);
 		}
     }
